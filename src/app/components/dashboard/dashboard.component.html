@@ -1,1 +1,43 @@
-<p>dashboard works!</p>
+
+<div class="container-fluid">
+  <div class="row title card">
+    <div class="col-md-4"><h1>Estudiantes</h1></div>
+  </div>
+  <div class="card m-4">
+
+      <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Identificacion</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Correo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of students$ | async; let i = index">
+              <td *ngIf="student != null">{{student.id}}</td>
+              <td *ngIf="student != null">{{student.name}}</td>
+              <td *ngIf="student != null">{{student.email}}</td>\
+              <td *ngIf="student != null">
+                <a [routerLink]="['/update-student',i]"
+                    (click)="updateStudent(i, student)">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+                <a [routerLink]="['/student',i]"
+                    (click)="viewStudent(i)">
+                  <i class="fa fa-eye" aria-hidden="true"></i>
+                </a>
+                <a (click)="deleteStudent(i)"><i class="fa fa-trash" aria-hidden="true"></i></a>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+  </div>
+  <div class="row m-4">
+    <div class="col-md-4">
+      <button type="button"
+              class="btn btn-success inputForm"
+              [routerLink]="['/create-student']">Agregar Estudiante</button>
+    </div>
+  </div>
+</div>

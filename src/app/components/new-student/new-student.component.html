@@ -1,1 +1,43 @@
-<p>new-student works!</p>
+<div class="container-fluid">
+  <div class="row title card">
+    <h1 style="margin-left: 15px;">Nuevo Estudiante</h1>
+  </div>
+
+  <div class="row card">
+    <form [formGroup]="StudentForm" (ngSubmit)="onSubmit()" class="form">
+
+      <div class="row m-2">
+
+        <div class="float-left">
+          <div class="inputForm p-2">
+            <label>Identificacion:</label>
+            <input type="number" formControlName="idStudent" class="inputs m-2">
+          </div>
+          <div class="inputForm p-2">
+            <Label>Nombre: </Label>
+            <input type="text" formControlName="nameStudent" class="inputs m-2">
+          </div>
+
+          <div class="inputForm p-2">
+            <label>Correo:</label>
+            <input type="email" formControlName="emailStudent" class="inputs m-2">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row m-2">
+        <div class="float-left">
+          <button type="reset" class="btn btn-danger inputForm m-2" [routerLink]="['']">
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-success inputForm m-2" [disabled]="StudentForm.pristine">
+            Guardar
+          </button>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+</div>

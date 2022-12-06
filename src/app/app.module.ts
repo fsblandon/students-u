@@ -7,6 +7,9 @@ import { StudentComponent } from './components/student/student.component';
 import { UpdateStudentComponent } from './components/update-student/update-student.component';
 import { NewStudentComponent } from './components/new-student/new-student.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { StoreModule } from '@ngrx/store';
+import { studentReducer } from './redux/student.reducer';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({
+      student: studentReducer
+    }),
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
